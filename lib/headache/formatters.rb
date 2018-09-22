@@ -42,5 +42,13 @@ module Headache
       fail "input #{input.inspect} does not respond to #strftime!" unless input.respond_to?(:strftime)
       input.strftime '%H%M'
     end
+
+    def format_numeric_blank_padded(input, length)
+      return ' ' * length if input.to_i == 0
+      input = input.to_i.abs.to_s
+      fail ArgumentError, "Invalid Input: #{input.inspect} (only digits are accepted) from #{self.class.to_s.demodulize}" unless input =~ /^\d+$/
+      fail ArgumentError, "Input has too many digits (input: #{input}, length: #{length})" if input.length > length
+      input.rjust(length, ' ')
+    end
   end
 end

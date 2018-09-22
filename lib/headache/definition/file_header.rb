@@ -8,7 +8,7 @@ module Headache
 
         field :priority_code,     2,   '2-3', :numeric
         field :destination,      10,  '4-13', :alphanumeric
-        field :origin,           10, '14-23', :alphanumeric
+        field :origin,           10, '14-23', :numeric_blank_padded
         field :creation_date,     6, '24-29', :date
         field :creation_time,     4, '30-33', :time
         field :id_modifier,       1, '34-34', :alphanumeric
